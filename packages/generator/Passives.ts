@@ -125,10 +125,19 @@ export const Passive = {
       ThiefOfFiveFates: 'ThiefOfFiveFates',
     },
     Fiend: {
-      DarkOnesBlessing: 'DarkOnesBlessing'
+      DarkOnesBlessing: 'DarkOnesBlessing',
+      DarkOnesOwnLuck: 'DarkOnesOwnLuck',
+      FiendishResilience: 'FiendishResilience',
     },
     GreatOldOne: {
-      ClarifiedMortality: 'ClarifiedMortality'
+      ClarifiedMortality: 'ClarifiedMortality',
+      EntropicWard: 'EntropicWard',
+      PsychicResistance: 'Thought_Shield_Psychic_Resistance',
+      PsychicReflection: 'Thought_Shield_Psychic_Reflection',
+    },
+    Archfey: {
+      MistyEscape: 'MistyEscape',
+      BeguilingDefenses: 'BeguilingDefenses',
     },
     Pact: {
       Chain: 'PactOfTheChain',
@@ -138,18 +147,57 @@ export const Passive = {
   },
   Wizard: {
     SchoolOfAbjuration: {
-      ArcaneWard: 'ArcaneWard',
+      ArcaneWard: 'ArcaneWard;ArcaneWard_Cast',
+      ProjectedWard: 'ProjectedWard',
+      ImprovedAbjuration: 'ImprovedAbjuration',
     },
     SchoolOfEvocation: {
+      PotentCantrip: 'PotentCantrip',
       SculptSpells: 'SculptSpells',
+      EmpoweredEvocation: 'EmpoweredEvocation',
+    },
+    SchoolOfConjuration: {
+      FocusedConjuration: 'FocusedConjuration'
+    },
+    SchoolOfDivination: {
+      Portent: 'Portent',
+      ExpertDivination: 'ExpertDivination',
+    },
+    SchoolOfEnchantment: {
+      InstinctiveCharm: 'InstinctiveCharm',
+      SplitEnchantment: 'SplitEnchantment',
+    },
+    SchoolOfNecromancy: {
+      GrimHarvest: 'GrimHarvest',
+      InuredtoUndeath: 'InuredtoUndeath',
+      UndeadThrall: 'UndeadThrall_FreeSpell;UndeadThrall_ExtraSummon;UndeadThrall_BetterSummon',
+    },
+    SchoolOfIllusion: {
+      ImprovedMinorIllusion: 'ImprovedMinorIllusion',
+      IllusorySelf: 'IllusorySelf',
+    },
+    SchoolOfTransmutation: {
+      ExperimentalAlchemy: 'ExperimentalAlchemy',
+      Shapechanger: 'Shapechanger',
+      TransmutationStone: 'TransmutationStone;TransmutationStone_Activation',
     }
   },
   Ranger: {
     EscapeTheHorde: 'EscapeTheHorde',
     SteelWill: 'SteelWill',
     MultiattackDefense: 'MultiattackDefense',
+    BypassDifficultTerrain: ' LandsStride_DifficultTerrain',
+    SurfacesNoLongerHarm: ' LandsStride_Surfaces',
+    AdvantageSurfaces: ' LandsStride_Advantage',
     BeastMaster: {
-      CompanionsBond: 'CompanionsBond'
+      CompanionsBond: 'CompanionsBond',
+      ExceptionalTraining: 'ExceptionalTraining',
+      BestialFury: 'BestialFury',
+    },
+    GloomStalker: {
+      DreadAmbusher: 'DreadAmbusher',
+      SuperiorDarkvision: 'SuperiorDarkvision',
+      IronMind: 'IronMind',
     }
   },
   Bard: {
@@ -208,6 +256,11 @@ export const Passive = {
   Paladin: {
     SmiteDivine: 'Smite_Divine',
     DivineHealth: 'DivineHealth',
+    ImprovedDivineSmite: 'ImprovedDivineSmite',
+    OathOfVengeance: {
+      Tenent: 'Oath_Vengeance_Tenents',
+      RelentlessAvenger: 'RelentlessAvenger',
+    },
     OathOfAncients: {
       Tenent: 'Oath_Ancients_Tenents'
     },
@@ -217,30 +270,65 @@ export const Passive = {
   },
   Rogue: {
     UncannyDodge: 'UncannyDodge',
+    SneakAttack: 'SneakAttack_Unlock',
+    Evasion: 'Evasion',
+    ReliableTalent: 'ReliableTalent',
     ArcaneTrickster: {
       MageHandLegerdemain: 'MageHandLegerdemain',
+      MagicalAmbush: 'MagicalAmbush',
     },
     Theif: {
       FastHands: 'FastHands',
       SecondStoryWork: 'SecondStoryWork',
+    },
+    Assassin: {
+      Assassinate: 'Assassinate_Initiative;Assassinate_Ambush;Assassinate_Resource'
     }
   },
   Sorcerer: {
     Draconic: {
       DraconicResilience: 'DraconicResilience',
+      ControlledChaos: 'ControlledChaos',
+      ElementalAffinity: 'ElementalAffinity_Damage;ElementalAffinity_Resistance_Check',
     },
     WildMagic: {
       TidesOfChaos: 'TidesOfChaos;TidesOfChaos_Unlock',
+      BendLuck: 'BendLuck',
       WildMagic: 'WildMagic'
+    },
+    Storm: {
+      TempestuousMagic: 'TempestuousMagic',
+      HeartOfTheStorm: 'HeartOfTheStorm',
+      Resistance: 'HeartOfTheStorm_Resistance',
+      StormsFury: 'StormsFury',
     }
   },
   Monk: {
-    UnarmoredDefense_Monk
-    MartialArts_DextrousUnarmedAttacks
-    MartialArts_UnarmedDamage
-    MartialArts_BonusUnarmedStrike
-    Monk_SoundSwitch
-    FlurryOfBlowsUnlock
+    UnarmoredDefense: 'UnarmoredDefense_Monk',
+    DextrousUnarmedAttacks: 'MartialArts_DextrousUnarmedAttacks',
+    UnarmedDamage: 'MartialArts_UnarmedDamage;Monk_SoundSwitch',
+    BonusUnarmedStrike: 'MartialArts_BonusUnarmedStrike',
+    Monk_SoundSwitch: 'Monk_SoundSwitch',
+    FlurryOfBlows: 'FlurryOfBlowsUnlock',
+    UnarmoredMovement1: 'UnarmoredMovement_1',
+    DeflectMissiles: 'DeflectMissiles',
+    SlowFall: 'SlowFall',
+    UnarmoredMovement2: 'UnarmoredMovement_2',
+    KiEmpoweredStrikes: 'KiEmpoweredStrikes',
+    Evasion: 'Evasion',
+    StillnessOfMind: 'StillnessOfMind',
+    UnarmoredMovementDifficultTerrain: 'UnarmoredMovement_DifficultTerrain',
+    UnarmoredMovement3: 'UnarmoredMovement_3',
+    PurityOfBody: 'PurityOfBody',
+    WayOfTheFourElements: {
+      ImprovedElementalCasting: 'ImprovedElementalCasting'
+    },
+    WayOfTheOpenHand: {
+      Manifestation_of_Body: 'Manifestation_of_Body',
+      Manifestation_of_Mind: 'Manifestation_of_Mind',
+      Manifestation_of_Soul: 'Manifestation_of_Soul',
+      Tranquility: 'Tranquility',
+    }
   },
   ElementalAdept: {
     Acid: 'ElementalAdept_Acid',
@@ -264,310 +352,26 @@ export const Passive = {
   FeyAncestry: 'FeyAncestry',
   DwarvenCombatTraining: 'Dwarf_DwarvenCombatTraining',
   DwarvenArmorTraining: 'MountainDwarf_DwarvenArmorTraining',
+  DwarvenResilience: 'Dwarf_DwarvenResilience',
+  DuergarResilience: 'Duergar_DuergarResilience',
   GnomeCunning: 'Gnome_Cunning',
   ArtificersLore: 'RockGnome_ArtificersLore',
   StoneCamouflage: 'DeepGnome_StoneCamouflage',
   LightfootStealth: 'Halfling_LightfootStealth',
   StoutResilience: 'Halfling_StoutResilience',
-  MartialProdigy: 'Gith_MartialProdigy',
+  HalflingLucky: 'Halfling_Lucky',
+  HalflingBrave: 'Halfling_Brave',
+  GithMartialProdigy: 'Gith_MartialProdigy',
+  HumanMilitia: 'HumanMilitia',
+  HumanVersatility: 'HumanVersatility',
+  ElfWeaponTraining: 'Elf_WeaponTraining',
+  DrowWeaponTraining: 'Drow_DrowWeaponTraining',
+  TieflingHellishResistance: 'Tiefling_HellishResistance',
+  DragonbornResistanceAcid: 'Dragonborn_Resistance_Acid',
+  DragonbornResistanceFire: 'Dragonborn_Resistance_Fire',
+  DragonbornResistanceLightning: 'Dragonborn_Resistance_Lightning',
+  DragonbornResistancePoison: 'Dragonborn_Resistance_Poison',
+  DragonbornResistanceCold: 'Dragonborn_Resistance_Cold',
+  RelentlessEndurance: 'RelentlessEndurance',
+  SavageAttacks: 'SavageAttacks',
 }
-
-
-
-
-UnarmoredDefense_Monk
-MartialArts_DextrousUnarmedAttacks
-MartialArts_UnarmedDamage
-MartialArts_BonusUnarmedStrike
-Monk_SoundSwitch
-FlurryOfBlowsUnlock
-UnarmoredDefense_Monk
-MartialArts_DextrousUnarmedAttacks
-MartialArts_UnarmedDamage
-MartialArts_BonusUnarmedStrike
-Monk_SoundSwitch
-FlurryOfBlowsUnlock
-UnarmoredMovement_1
-DeflectMissiles
-SlowFall
-UnarmoredMovement_2
-KiEmpoweredStrikes
-Evasion
-StillnessOfMind
-
-UnarmoredMovement_DifficultTerrain
-UnarmoredMovement_3
-PurityOfBody
-
-
-ImprovedElementalCasting
-
-
-Manifestation_of_Body
-Manifestation_of_Mind
-Manifestation_of_Soul
-
-Tranquility
-
-
-UnlockedSpellSlotLevel3
-
-ImprovedDivineSmite
-
-
-Oath_Vengeance_Tenents
-
-
-RelentlessAvenger
-
-
-UnlockedSpellSlotLevel1
-
-UnlockedSpellSlotLevel2
-LandsStride_DifficultTerrain
-LandsStride_Surfaces
-UnlockedSpellSlotLevel3
-
-
-ExceptionalTraining
-BestialFury
-
-
-DreadAmbusher
-SuperiorDarkvision
-
-IronMind
-
-StalkersFlurry
-SneakAttack_Unlock
-SneakAttack_Unlock
-
-
-Evasion
-
-
-ReliableTalent
-
-
-UnlockedSpellSlotLevel2
-
-MagicalAmbush
-
-
-Assassinate_Initiative
-Assassinate_Ambush
-Assassinate_Resource
-
-
-UnlockedSpellSlotLevel1
-UnlockedSpellSlotLevel1
-
-
-ElementalAffinity_Damage
-ElementalAffinity_Resistance_Check
-
-BendLuck
-ControlledChaos
-TempestuousMagic
-HeartOfTheStorm
-HeartOfTheStorm_Resistance
-StormsFury
-UnlockedWarlockSpellSlotLevel1
-UnlockedWarlockSpellSlotLevel1
-
-
-MistyEscape
-
-
-BeguilingDefenses
-
-
-DarkOnesOwnLuck
-
-
-FiendishResilience
-
-
-EntropicWard
-
-
-Thought_Shield_Psychic_Resistance
-Thought_Shield_Psychic_Reflection
-
-
-UnlockedSpellSlotLevel1
-UnlockedSpellSlotLevel1
-
-
-ArcaneWard
-ArcaneWard_Cast
-ProjectedWard
-
-
-ImprovedAbjuration
-
-
-FocusedConjuration
-
-
-Portent
-
-
-ExpertDivination
-
-
-InstinctiveCharm
-
-
-SplitEnchantment
-
-
-PotentCantrip
-
-
-EmpoweredEvocation
-
-
-GrimHarvest
-
-
-UndeadThrall_FreeSpell
-UndeadThrall_ExtraSummon
-UndeadThrall_BetterSummon
-
-
-InuredtoUndeath
-
-
-ImprovedMinorIllusion
-
-
-IllusorySelf
-
-
-ExperimentalAlchemy
-
-
-TransmutationStone
-TransmutationStone_Activation
-
-
-Shapechanger
-
-
-HumanMilitia
-HumanVersatility
-Elf_WeaponTraining
-Darkvision
-FeyAncestry
-
-
-Drow_DrowWeaponTraining
-SuperiorDarkvision
-FeyAncestry
-
-
-Dwarf_DwarvenCombatTraining
-Darkvision
-Dwarf_DwarvenResilience
-
-MountainDwarf_DwarvenArmorTraining
-SuperiorDarkvision
-Duergar_DuergarResilience
-
-
-HumanMilitia
-Darkvision
-FeyAncestry
-
-
-Gnome_Cunning
-Darkvision
-RockGnome_ArtificersLore
-SuperiorDarkvision
-DeepGnome_StoneCamouflage
-Darkvision
-Halfling_Lucky
-Halfling_Brave
-Halfling_LightfootStealth
-Halfling_StoutResilience
-Darkvision
-Tiefling_HellishResistance
-
-
-Dragonborn_Resistance_Acid
-Dragonborn_Resistance_Lightning
-Dragonborn_Resistance_Fire
-Dragonborn_Resistance_Lightning
-Dragonborn_Resistance_Acid
-Dragonborn_Resistance_Fire
-Dragonborn_Resistance_Poison
-Dragonborn_Resistance_Fire
-Dragonborn_Resistance_Cold
-Dragonborn_Resistance_Cold
-Darkvision
-RelentlessEndurance
-SavageAttacks
-Gith_MartialProdigy
-
-UnarmoredDefense_Monk
-MartialArts_DextrousUnarmedAttacks
-MartialArts_UnarmedDamage
-MartialArts_BonusUnarmedStrike
-UnarmoredMovement_1
-DeflectMissiles
-SlowFall
-UnarmoredMovement_2
-KiEmpoweredStrikes
-Evasion
-StillnessOfMind
-
-UnarmoredMovement_DifficultTerrain
-UnarmoredMovement_3
-PurityOfBody
-
-
-
-LandsStride_DifficultTerrain
-LandsStride_Surfaces
-
-
-Evasion
-
-
-ReliableTalent
-
-
-NaturesWard
-
-
-FeralInstinct
-
-BrutalCritical
-
-RelentlessRage
-
-BardicInspiration
-BardSpellcasting
-
-
-FontOfInspiration
-BardicInspiration_d8
-
-
-
-
-PhalanxFormation_Duergar
-Riposte
-
-
-CrossbowExpert_PointBlank
-
-
-SecondStoryWork
-
-
-Smite_Divine_3_NPC
-
-ImprovedDivineSmite
-
