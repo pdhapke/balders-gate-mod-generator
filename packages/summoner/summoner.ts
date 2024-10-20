@@ -1,5 +1,3 @@
-#!/usr/bin/env ./node_modules/.bin/ts-node
-
 import 'dotenv/config'
 import {Mod} from "generator";
 import path from "node:path";

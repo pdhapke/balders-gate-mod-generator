@@ -1,7 +1,9 @@
 import {v4 as uuidv4} from 'uuid';
-import {makeDirectory} from "./utils";
+import {loadFile, makeDirectory, saveFile} from "./utils";
 import {readdirSync} from "node:fs";
-import {loadMetadataFile} from "./xml";
+import {ProjectMetadata, ProjectMetaData} from "./ModFiles/ProjectMetaData";
+import {ModMetaData} from "./ModFiles/ModMetaData";
+import {EditorData} from "./ModFiles/EditorData";
 
 interface ModConfiguration {
   baldursGatePath: string;
@@ -9,11 +11,13 @@ interface ModConfiguration {
 }
 
 export class Mod {
+  private readonly baldursGatePath: string;
   private nameIncludesUuid: boolean = true;
-  private baldursGatePath: string;
+  private projectMetaData: ProjectMetaData;
+  private modMetaData: ModMetaData;
+  private editorData: EditorData;
 
-  name: string;
-  modUUID: string = uuidv4();
+  private modUUID: string = uuidv4();
 
   private get uniqueName() {
     return this.nameIncludesUuid ? `${this.name}_${this.modUUID}` : this.name;
@@ -35,13 +39,27 @@ export class Mod {
     return `${this.baldursGatePath}/Data/Editor/Mods/${this.uniqueName}`
   }
 
-  constructor(name: string, configuration: ModConfiguration) {
-    this.name = name;
+  constructor(public name: string, private configuration: ModConfiguration) {
     this.baldursGatePath = configuration.baldursGatePath;
-    this.#loadExisting()
+    this.loadExistingProjectId();
+
+    this.projectMetaData = new ProjectMetaData(this.name, this.modUUID, loadFile<ProjectMetadata>(`${this.ProjectFolder}/meta.lsx`) );
+    this.modMetaData =  new ModMetaData(this.name, this.modUUID, this.uniqueName, loadFile(`${this.ModsFolder}/meta.lsx`));
+    this.editorData =  new EditorData({
+      spellListData: loadFile(`${this.EditorFolder}/Lists/SpellLists.tbl`),
+      progressionsData: loadFile(`${this.EditorFolder}/Progressions/Progressions.tbl`),
+    });
   }
 
-  #loadExisting() {
+  build() {
+    //todo build all the sub objects in order
+    this.buildProjectMetaDataFile();
+    this.buildModMetaDataFile()
+    this.buildEditorTableFiles()
+    makeDirectory(this.PublicFolder);
+  }
+
+  private loadExistingProjectId() {
     makeDirectory(`${this.baldursGatePath}/Data/Project`)
     const [modDefinitionDirectory] = readdirSync(`${this.baldursGatePath}/Data/Project`, {withFileTypes: true})
       .filter(dirent => dirent.isDirectory())
@@ -49,22 +67,33 @@ export class Mod {
       .filter(directoryName => directoryName.startsWith(this.name))
 
     if (modDefinitionDirectory) {
-      const moduleNode = loadMetadataFile(`${modDefinitionDirectory}/meta.lsx`)?.save.region.node.attribute.find(node => node["@_id"] === 'Module');
-      const uuidFromFile = moduleNode?.["@_value"];
+      const metaData = loadFile<ProjectMetadata>(`${modDefinitionDirectory}/meta.lsx`)
+      const uuidFromFile = metaData?.save.region.node.attribute.find(node => node["@_id"] === 'Module')?.["@_value"] as string;
       const [, uuidFromDirectory] = modDefinitionDirectory.split('_')
-
       this.modUUID = uuidFromFile ?? uuidFromDirectory;
       this.nameIncludesUuid = !!uuidFromDirectory
     }
   }
 
-  build() {
-    makeDirectory(this.ModsFolder);
+  private buildProjectMetaDataFile() {
     makeDirectory(this.ProjectFolder);
-    makeDirectory(this.PublicFolder);
-    makeDirectory(this.EditorFolder);
+    for (const [fileName, fileData] of this.projectMetaData.build()) {
+      saveFile(`${this.ProjectFolder}/${fileName}`, fileData);
+    }
+  }
 
-    //todo build all the sub objects in order
+  private buildModMetaDataFile() {
+    makeDirectory(this.ModsFolder);
+    for (const [fileName, fileData] of this.modMetaData.build()) {
+      saveFile(`${this.ModsFolder}/${fileName}`, fileData);
+    }
+  }
+
+  private buildEditorTableFiles() {
+    makeDirectory(this.EditorFolder);
+    for (const [fileName, fileData] of this.editorData.build()) {
+      saveFile(`${this.EditorFolder}/${fileName}`, fileData);
+    }
   }
 }
 
